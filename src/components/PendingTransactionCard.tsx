@@ -16,8 +16,15 @@ export const PendingTransactionCard: React.FC<PendingTransactionCardProps> = ({
   onIgnore,
 }) => (
   <View style={styles.card}>
-    <Text style={styles.title}>₹{expense.amount} · {expense.merchant}</Text>
-    <Text style={styles.subtitle}>One‑tap confirmation</Text>
+    <View style={styles.headerRow}>
+      <View>
+        <Text style={styles.title}>₹{expense.amount} · {expense.merchant}</Text>
+        <Text style={styles.subtitle}>One‑tap confirmation</Text>
+      </View>
+      <View style={styles.badge}>
+        <Text style={styles.badgeText}>Pending</Text>
+      </View>
+    </View>
     <View style={styles.actions}>
       <TouchableOpacity style={styles.confirm} onPress={onConfirm}>
         <Text style={styles.confirmText}>Confirm</Text>
@@ -38,9 +45,19 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 16,
     marginBottom: 12,
+    borderWidth: 1,
+    borderColor: '#1E293B',
   },
+  headerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   title: { color: '#F8FAFC', fontSize: 16, fontWeight: '600' },
   subtitle: { color: '#94A3B8', fontSize: 12, marginTop: 4 },
+  badge: {
+    backgroundColor: '#1E293B',
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    borderRadius: 999,
+  },
+  badgeText: { color: '#E2E8F0', fontSize: 11, fontWeight: '600' },
   actions: { flexDirection: 'row', marginTop: 12, gap: 8 },
   confirm: {
     backgroundColor: '#22C55E',
